@@ -23,4 +23,11 @@ def step_click_login(context):
 @then('the user should be redirected to the inventory page')
 def step_verify_inventory_page(context):
     assert context.login_page.is_inventory_page_displayed(), "Inventory page is not displayed"
-    context.driver.quit()        
+    context.driver.quit()    
+    
+    
+@when('the user enters wrong username "invalid_user" and password "invalid_password"')
+def step_enter_credentials(context, username, password):
+    context.login_page.enter_username(username)
+    context.login_page.enter_password(password)       
+    context.login_page.click_login() 
